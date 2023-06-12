@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend mentor | Todo-list</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,500;1,400&display=swap');
+      </style>
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+</head>
+<body id="body" >
+    <div class="image"></div>
+    <div class="container">
+        
+        <div class="content">
+            <div class="header"> 
+                <h1>Todo</h1>
+                <!-- <img src="images/icon-sun.svg" id="sun-img" class="sun" alt=""> -->
+                <span id="switch" class="sun"></span>
+                </div>
+            <div class="input-box" id="input-box-div">
+                <p><span class="span"></span></p>
+                <input type="text" id="input-box" placeholder="Create Todo-task.....">
+            </div>
+            <div class="tasks" id="tasks">
+                <ul id="ul-container">
+                   
+                <!--    <li class="listItems">
+                        <div class="task">
+                            <span class="check"></span>
+                            <label for="list-items" id="list-items">list item</label>
+                        </div>
+                    <span class="cross"></span>
+                   </li>
+                   <li class="listItems">
+                    <div class="task">
+                        <span class="check"></span>
+                        <label for="list-items" id="list-items">list item</label>
+                    </div>
+                <span class="cross"></span>
+               </li>
+               <li class="listItems">
+                <div class="task">
+                    <span class="check"></span>
+                    <label for="list-items" id="list-items">list item</label>
+                </div>
+            <span class="cross"></span>
+           </li>
+                   -->      
+                </ul>
+                <div class="footer flex-foot" id="footer">
+                    <p><span id="items-count">0</span>items left</p>
+                    <div class="center-footer flex-foot">
+                        <p>all </p>
+                        <p>active</p>
+                        <p>Completed</p>
+                    </div>
+                     <p onclick="clearcomp()">Clear Completed</p>
+                </div>
+            </div>
+           
+        </div>
+      
+    </div>
+
+    
+    <script src="index.js"></script>
+</body>
+</html>
