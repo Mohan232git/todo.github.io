@@ -29,6 +29,7 @@ document.getElementById("ul-container").addEventListener("click",function(e){
     }
     else if(e.target.tagName==="SPAN") {
         e.target.parentNode.remove() ;
+
         itemsleft();
         savetask();
     }
@@ -116,6 +117,8 @@ function appendli() {
     span.setAttribute("id","cross");
     li.append(span);
     liList.append(li);
+    liList.classList.add('task-container');
+    if(liList==null) liList.classList.remove('task-container');
     /* savetask(liList); */
     input.value="" ;
     document.getElementById('input-box').classList.remove("invalid");
@@ -210,6 +213,7 @@ function clearcomp(){
  function displaytask(){
     container.innerHTML = localStorage.getItem("data") ;
 }
+
 
 displaytask();
 
