@@ -265,15 +265,24 @@ li:hover #cross {
     padding: 5px;
 }
 
-.task-container > .listItems {
+.task-container 
+{
+
+    .listItems {
     border: 1px solid lightblue;
     margin-top: 10px;
     border-radius: 20px;
-    background-color: hsla(0, 100%, 67% , 0.8);
+    background-color: hsla(0, 75%, 64%, 0.826);
+    transition: background-color 0.5s linear;
+    }
     
+    .checked-items {
+        background-color: rgba(107, 242, 100, 0.815);
+        transition:background-color 0.5s linear;
+        color: white;
 }
 
-
+}
 
 
 @media(max-width:600px){

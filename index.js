@@ -57,7 +57,7 @@ img.addEventListener("click",function(e){
                 inputField.classList.add("input-dm");
                 tasksdiv.classList.add("dm-tasks");
 
-                
+                savetask()
                 
             }
             else {
@@ -73,7 +73,7 @@ img.addEventListener("click",function(e){
                 inputBox.classList.remove("input-box-dm");
                 inputField.classList.remove("input-dm");
                 tasksdiv.classList.remove("dm-tasks");
-                
+                savetask()
             
             }
         
