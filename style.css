@@ -284,6 +284,36 @@ li:hover #cross {
 
 }
 
+.priority-btns {
+    margin: 10px 0;
+
+}
+
+.priority-a , .priority-b , .priority-c {
+    width: 30px;
+    height: 30px;
+    border-radius:50%;
+    border: 1px solid black;
+    margin: 5px;
+}
+
+.priority-a {
+    background-color:rgba(255, 0, 0, 0.953);
+    color: white;
+}
+
+.priority-b {
+    background-color: rgb(255, 221, 0);
+    color: white;
+}
+
+.priority-c {
+    background-color:gray;
+    color: white;
+}
+
+
+
 
 @media(max-width:600px){
     .image {
