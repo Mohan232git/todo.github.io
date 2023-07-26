@@ -119,8 +119,8 @@ function appendli() {
     span.setAttribute("id","cross");
     li.append(span);
     liList.append(li);
-    liList.classList.add('task-container');
-    if(liList==null) liList.classList.remove('task-container');
+   /*  liList.classList.add('task-container');
+    if(liList==null) liList.classList.remove('task-container'); */
     /* savetask(liList); */
     input.value="" ;
     document.getElementById('input-box').classList.remove("invalid");
