@@ -231,6 +231,17 @@ ul li.checked-items::before {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+}
+
+.outerdiv {
+    flex-basis: 60%;
+}
+
+.priority-btns {
+    display: flex;
+    justify-content: space-between;
+    flex-basis: 25%;
 }
 
 li:hover #cross {
@@ -320,6 +331,13 @@ li:hover #cross {
     border: none;
 }
 
+.priority:active {
+    border: none;
+}
+.priority:focus {
+    border: none;
+}
+
 .main-task-div {
     display: flex;
     flex-direction: row;
@@ -328,6 +346,11 @@ li:hover #cross {
 
 .cross {
     margin-top: 5px;
+    margin-right: 10px;
+    flex-shrink: 0;
+}
+
+.cross img {
     width: 100%;
     height: 100%;
 }
@@ -396,6 +419,7 @@ li:hover #cross {
     .center-footer {
         display: none;
     }
+    
 }
 
 
