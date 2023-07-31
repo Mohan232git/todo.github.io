@@ -1,6 +1,6 @@
 let ul_container = document.getElementById('ul-container'); 
 
-
+let selectelement ;
 
 
 
@@ -49,8 +49,14 @@ function addlistitem() {
     
 
     input.value = '' ;
-    
+    selectelement = myFunction();
 
+    console.log(selectelement);
+
+    selectelement.forEach(item => {
+        item.addEventListener('onchange',count(selectelement)) ;
+    })
+    
 }
 
 
@@ -109,13 +115,17 @@ const newprioritydiv = ()=> {
 }
 
 
-myFunction() {
-    let select = document.querySelectorAll('#task') 
+function myFunction() {
+    let select =[...document.querySelectorAll('#task-priority')] ;
+    
+    return select ;
 }
 
 
-
-
+function count(items) {
+    taskpriority = items ; 
+    console.log(taskpriority);
+}
 
 
 
