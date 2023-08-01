@@ -50,12 +50,14 @@ function addlistitem() {
 
     input.value = '' ;
     selectelement = myFunction();
-
-    console.log(selectelement);
-
     selectelement.forEach(item => {
-        item.addEventListener('onchange',count(selectelement)) ;
-    })
+        item.addEventListener('onchange', count(selectelement));
+    }) ;
+    
+
+   /*  console.log(selectelement); */
+
+    
     
 }
 
@@ -76,6 +78,7 @@ const newtaskdiv = () => {
 const newprioritydiv = ()=> {
     let prioritydiv = document.createElement('div');
     let selecttag = document.createElement('select') ;
+    let option_select = document.createElement('option');
     let option1 = document.createElement('option');
     let option2 = document.createElement('option');
     let option3 = document.createElement('option');
@@ -87,12 +90,18 @@ const newprioritydiv = ()=> {
     prioritydiv.setAttribute('class' , 'priority-btns') ;
     selecttag.setAttribute('id' , 'task-priority') ;
     selecttag.setAttribute('class' , 'priority') ;
-    selecttag.setAttribute('onchange', 'myFunction()');
+    /* selecttag.setAttribute('onchange', 'myFunction()'); */
+
+
+    option_select.disabled ;
+    option_select.selected ;
+    option_select.hidden ;
 
     option1.setAttribute('value' , '1');
     option2.setAttribute('value' , '2');
     option3.setAttribute('value' , '3');
 
+    option_select.innerText = 'Select';
     option1.innerText = "A task" ;
     option2.innerText = "B task" ;
     option3.innerText = "C task" ;
@@ -101,12 +110,13 @@ const newprioritydiv = ()=> {
 
     spanCross.appendChild(img);
 
-    selecttag.append(option1 , option2 , option3);
+    selecttag.append(option_select , option1 , option2 , option3);
 
     prioritydiv.appendChild(selecttag)
 
     prioritydiv.appendChild(spanCross);
 
+    console.log(option_select);
 
 
     
@@ -122,10 +132,14 @@ function myFunction() {
 }
 
 
+
+
 function count(items) {
-    taskpriority = items ; 
+    taskpriority = items; 
     console.log(taskpriority);
 }
+
+
 
 
 
