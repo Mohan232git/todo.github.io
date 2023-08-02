@@ -277,23 +277,8 @@ li:hover #cross {
     padding: 5px;
 }
 
-.task-container 
-{
-
-    .priority {
-    border: 1px solid lightblue;
-    margin-top: 10px;
-    border-radius: 20px;
-    background-color: hsla(0, 75%, 64%, 0.826);
-    transition: background-color 0.5s linear;
-    }
-    
-    .checked-items {
-        background-color: rgba(107, 242, 100, 0.815);
-        transition:background-color 0.5s linear;
-        color: white;
-}
-
+#ul-container {
+    padding: 5px;
 }
 
 .priority-btns {
@@ -302,30 +287,26 @@ li:hover #cross {
 }
 
 .priority-a , .priority-b , .priority-c {
-    width: 30px;
-    height: 30px;
-    border-radius:50%;
-    border: 1px solid black;
     margin: 5px;
 }
 
 .priority-a {
-    background-color:rgba(255, 0, 0, 0.953);
+    background-color:rgba(255, 0, 0, 0.5);
     color: white;
 }
 
 .priority-b {
-    background-color: rgb(255, 221, 0);
-    color: white;
+    background-color: rgba(255, 221, 0 , 0.3);
+    color: black;
 }
 
 .priority-c {
-    background-color:gray;
+    background-color:rgba(100, 100, 100, 0.5);
     color: white;
 }
 
 .priority {
-    padding: 5px 0;
+    padding: 5px 5px;
     font-family: Arial, Helvetica, sans-serif;
     font-weight: 700;
     border: none;
@@ -363,7 +344,23 @@ li:hover #cross {
 .priority > option {
     padding: 10px;
 }
+.task-container 
+{
 
+    .priority {
+    border: 1px solid lightblue;
+    margin-top: 10px;
+    border-radius: 20px;
+    background-color: hsla(0, 75%, 64%, 0.826);
+    transition: background-color 0.5s linear;
+    }
+
+}
+.checked-items {
+    background-color: rgba(107, 242, 100, 0.815);
+    transition:background-color 0.5s linear;
+    color: white;
+}
 @media(max-width:600px){
     .image {
         background-position: center;

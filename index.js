@@ -1,6 +1,7 @@
 let ul_container = document.getElementById('ul-container'); 
 
-let selectelement ;
+let select ;
+
 
 
 
@@ -9,6 +10,14 @@ addEventListener('keydown', (event)=> {
         addlistitem();
     }
 }) ;
+
+
+
+
+/* select.addEventListener( 'change' , (e)=>{
+    console.log(e.target.options[e.target.selectedIndex].text);
+}) */
+
 
 
 
@@ -51,7 +60,22 @@ function addlistitem() {
     input.value = '' ;
     selectelement = myFunction();
     selectelement.forEach(item => {
-        item.addEventListener('onchange', count(selectelement));
+        item.addEventListener('change', (e)=> {
+            option_collection = e.target ;
+            option_value = option_collection.options[option_collection.selectedIndex].value ;
+            console.log(option_collection);
+            console.log(option_value);
+            if(option_value==1) {
+                option_collection.parentNode.parentNode.classList.add
+                ('priority-a');
+            }
+            if(option_value==2) {
+                option_collection.parentNode.parentNode.classList.add('priority-b');
+            }
+            if(option_value==3) {
+                option_collection.parentNode.parentNode.classList.add('priority-c');
+            }
+        });
     }) ;
     
 
@@ -134,10 +158,8 @@ function myFunction() {
 
 
 
-function count(items) {
-    taskpriority = items; 
-    console.log(taskpriority);
-}
+
+
 
 
 
