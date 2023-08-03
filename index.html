@@ -12,61 +12,28 @@
     
     <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
 </head>
-<body id="body" >
+<body id="body"  >
     <div class="image"></div>
     <div class="container">
         
         <div class="content">
             <div class="header"> 
                 <h1>Todo</h1>
-                <!-- <img src="images/icon-sun.svg" id="sun-img" class="sun" alt=""> -->
-                <span id="switch" class="sun"></span>
-                </div>
-
+                <!--  -->
+                <span id="switch-img" class="sun">
+                    <img src="images/icon-sun.svg" id="sun-img" class="sun" alt="" onmousedown="swapimg()">
+                </span>
+             </div>
+            
+             
                
             <div class="input-box" id="input-box-div">
                 <p><span class="span"></span></p>
                 <input type="text" id="input-box" placeholder="Create Todo-task....." autocomplete="off">
             </div>
+            
             <div class="tasks" id="tasks">
                 <ul id="ul-container" >
-                    <li class="listItems">
-                        <div class="outer-div">
-                         <div class="main-task-div">
-                            <label for="list-items" id="list-items">list-items</label>
-                        </div>
-
-                        </div>
-                        
-                        <div class="priority-btns">
-                            <select name="priority" id="task-priority" class="priority"  >
-                                <!-- <option disabled hidden selected>Select</option> -->
-                                <option value="1">A task</option> 
-                                <option value="2">B task</option>
-                                <option value='3'>C task</option>
-                            </select>
-                            <span class="cross">
-                                <img src="images/icon-cross.svg" alt="">
-                            </span>
-                        </div>
-                        
-                    </li>
-         <!--         <li class="listItems">
-                        <div class="task">
-                            <span class="check"></span>
-                            <label for="list-items" id="list-items">list item</label>
-                        </div>
-                    <span class="cross"></span>
-                   </li>
-
-                   <li class="listItems">
-                    <div class="task">
-                        <span class="check"></span>
-                        <label for="list-items" id="list-items">list item</label>
-                    </div>
-                <span class="cross"></span>
-               </li> -->
-               
                       
                 </ul>
 
@@ -74,11 +41,14 @@
 
                 <div class="footer flex-foot" id="footer">
                     <p><span id="items-count">0</span>items left</p>
-                    <div class="center-footer flex-foot">
-                        <p>all </p>
-                        <p>active</p>
-                        <p>Completed</p>
-                    </div>
+
+
+                    <div class="choose">
+                        
+                        <label for="checkbox">task Priority</label>
+                        <input type="checkbox" id="checkbox" class="choose-input">
+                     </div>
+                    
                      <p >Clear Completed</p>
                 </div>
             </div>

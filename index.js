@@ -1,6 +1,8 @@
 let ul_container = document.getElementById('ul-container'); 
-
+let switch_img = document.getElementById('switch-img') ;
+let body = document.getElementById('body');
 let select ;
+
 
 
 
@@ -28,13 +30,13 @@ addEventListener('keydown', (event)=> {
 
 
 ul_container.addEventListener('click' , (event)=> {
-        if(event.target.tagName == 'LI') {
+        if(event.target.tagName === 'LI') {
             event.target.classList.toggle('checked-items')
         }
-        if(event.target.tagName == "LABEL") {
+        if(event.target.tagName === "LABEL") {
             event.target.parentNode.parentNode.parentNode.classList.toggle('checked-items');
         }
-        if(event.target.tagName == "IMG") event.target.parentNode.parentNode.parentNode.remove();
+        if(event.target.tagName === "IMG") event.target.parentNode.parentNode.parentNode.remove();
        
 });
 
@@ -57,14 +59,14 @@ function addlistitem() {
     ul_container.append(newli) ;
     
 
-    input.value = '' ;
-    selectelement = myFunction();
+    input.value = "" ;
+    selectelement = document.querySelectorAll('#task-priority');
+    console.log(selectelement);
     selectelement.forEach(item => {
         item.addEventListener('change', (e)=> {
             option_collection = e.target ;
             option_value = option_collection.options[option_collection.selectedIndex].value ;
-            console.log(option_collection);
-            console.log(option_value);
+
             if(option_value==1) {
                 option_collection.parentNode.parentNode.classList.add
                 ('priority-a');
@@ -77,12 +79,6 @@ function addlistitem() {
             }
         });
     }) ;
-    
-
-   /*  console.log(selectelement); */
-
-    
-    
 }
 
 
@@ -149,14 +145,33 @@ const newprioritydiv = ()=> {
 }
 
 
-function myFunction() {
+function getSelectOptions() {
     let select =[...document.querySelectorAll('#task-priority')] ;
     
     return select ;
 }
 
 
-
+function swapimg() {
+    let img = document.getElementById('sun-img');
+    let inputdiv = document.getElementById('input-box-div');
+    let inputbox = document.getElementById('input-box');
+    let taskdiv = document.getElementById('tasks');
+    if(img.src.match('images/icon-sun.svg')){
+        img.src = 'images/icon-moon.svg';
+        body.classList.add('dm-body');
+        inputdiv.classList.add('input-box-dm');
+        inputbox.classList.add('input-dm');
+        taskdiv.classList.add('dm-tasks');
+    }
+    else{
+        img.src = 'images/icon-sun.svg';
+        body.classList.remove('dm-body');
+        inputdiv.classList.remove('input-box-dm');
+        inputbox.classList.remove('input-dm');
+        taskdiv.classList.remove('dm-tasks');
+    }
+}
 
 
 
