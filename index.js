@@ -31,13 +31,19 @@ addEventListener('keydown', (event)=> {
 
 ul_container.addEventListener('click' , (event)=> {
         if(event.target.tagName === 'LI') {
-            event.target.classList.toggle('checked-items')
+            event.target.classList.toggle('checked-items');
+           
         }
         if(event.target.tagName === "LABEL") {
             event.target.parentNode.parentNode.parentNode.classList.toggle('checked-items');
+            
         }
         if(event.target.tagName === "IMG") event.target.parentNode.parentNode.parentNode.remove();
-       
+        
+
+
+
+       savedata();
 });
 
 
@@ -45,7 +51,7 @@ ul_container.addEventListener('click' , (event)=> {
 
 function addlistitem() {
     let newli = document.createElement('li'); 
-   
+   const checkbox = document.getElementById('checkbox');
     let input = document.getElementById('input-box') ;
     
     let newdiv = newtaskdiv();
@@ -60,25 +66,32 @@ function addlistitem() {
     
 
     input.value = "" ;
+    
     selectelement = document.querySelectorAll('#task-priority');
-    console.log(selectelement);
     selectelement.forEach(item => {
         item.addEventListener('change', (e)=> {
             option_collection = e.target ;
             option_value = option_collection.options[option_collection.selectedIndex].value ;
 
+
             if(option_value==1) {
                 option_collection.parentNode.parentNode.classList.add
                 ('priority-a');
+
             }
             if(option_value==2) {
                 option_collection.parentNode.parentNode.classList.add('priority-b');
+
             }
             if(option_value==3) {
                 option_collection.parentNode.parentNode.classList.add('priority-c');
+
             }
+
+            savedata();
         });
     }) ;
+   savedata()
 }
 
 
@@ -113,9 +126,9 @@ const newprioritydiv = ()=> {
     /* selecttag.setAttribute('onchange', 'myFunction()'); */
 
 
-    option_select.disabled ;
-    option_select.selected ;
-    option_select.hidden ;
+    option_select.setAttribute('disabled', 'true') ;
+    option_select.setAttribute('selected' , 'true') ;
+    option_select.setAttribute('hidden' , 'true') ;
 
     option1.setAttribute('value' , '1');
     option2.setAttribute('value' , '2');
@@ -163,6 +176,7 @@ function swapimg() {
         inputdiv.classList.add('input-box-dm');
         inputbox.classList.add('input-dm');
         taskdiv.classList.add('dm-tasks');
+        
     }
     else{
         img.src = 'images/icon-sun.svg';
@@ -170,14 +184,21 @@ function swapimg() {
         inputdiv.classList.remove('input-box-dm');
         inputbox.classList.remove('input-dm');
         taskdiv.classList.remove('dm-tasks');
+        
     }
 }
 
 
+function savedata() {
+    
+    localStorage.setItem( 'data' , ul_container.innerHTML);
+}
 
+function displaydata() {
+    ul_container.innerHTML = localStorage.getItem('data');
+}
 
-
-
+displaydata();
 
 
 /* let priority_task = document.getElementById('task-priority'); */

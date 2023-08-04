@@ -365,12 +365,13 @@ li:hover #cross {
     flex-direction: row;
     align-items: center;
     gap: 20px;
-    color: black;
-    &label {
-        text-transform: capitalize;
-    }   
+    color: black; 
+}
 
-    
+.choose label {
+    text-transform: capitalize;
+    color: gray;
+    font-weight: 500;
 }
 
 .choose-input {
@@ -401,6 +402,19 @@ li:hover #cross {
     content: '\2713';
     transform: translateX(15px);
      
+}
+
+.priority {
+    background-color: lightgray;
+    outline: none;
+    border-radius: 10px;
+}
+
+.checked::before {
+    background-image:url('images/icon-check.svg') ;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
 }
 
 @media(max-width:600px){
