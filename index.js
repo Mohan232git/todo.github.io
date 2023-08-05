@@ -1,7 +1,8 @@
 let ul_container = document.getElementById('ul-container'); 
 let switch_img = document.getElementById('switch-img') ;
 let body = document.getElementById('body');
-let select ;
+let select_tag=[] ;
+let option_values_collection = [] ;
 
 
 
@@ -30,19 +31,23 @@ addEventListener('keydown', (event)=> {
 
 
 ul_container.addEventListener('click' , (event)=> {
+   
         if(event.target.tagName === 'LI') {
             event.target.classList.toggle('checked-items');
+            
+            
            
         }
         if(event.target.tagName === "LABEL") {
             event.target.parentNode.parentNode.parentNode.classList.toggle('checked-items');
+           
             
         }
         if(event.target.tagName === "IMG") event.target.parentNode.parentNode.parentNode.remove();
         
 
-
-
+        
+        count_items();
        savedata();
 });
 
@@ -67,31 +72,21 @@ function addlistitem() {
 
     input.value = "" ;
     
-    selectelement = document.querySelectorAll('#task-priority');
-    selectelement.forEach(item => {
+    let select= document.querySelectorAll('#task-priority');
+    select_tag = [...select];    
+
+    select.forEach(item => {
         item.addEventListener('change', (e)=> {
-            option_collection = e.target ;
-            option_value = option_collection.options[option_collection.selectedIndex].value ;
-
-
-            if(option_value==1) {
-                option_collection.parentNode.parentNode.classList.add
-                ('priority-a');
-
-            }
-            if(option_value==2) {
-                option_collection.parentNode.parentNode.classList.add('priority-b');
-
-            }
-            if(option_value==3) {
-                option_collection.parentNode.parentNode.classList.add('priority-c');
-
-            }
-
-            savedata();
+            option_values_collection.push(e.target.options[e.target.options.selectedIndex].value);
+            myfunction(e.target);
+       
         });
+        
     }) ;
-   savedata()
+    saveselect_data();
+    count_items() ;
+    savedata();
+   
 }
 
 
@@ -158,11 +153,7 @@ const newprioritydiv = ()=> {
 }
 
 
-function getSelectOptions() {
-    let select =[...document.querySelectorAll('#task-priority')] ;
-    
-    return select ;
-}
+
 
 
 function swapimg() {
@@ -189,6 +180,15 @@ function swapimg() {
 }
 
 
+const count_items  = () => {
+    let display_count = document.querySelector('#items-count');
+    let NotChecked = ul_container.querySelectorAll('li:not(.checked-items)');
+    
+    display_count.innerText =NotChecked.length;
+   
+}
+
+
 function savedata() {
     
     localStorage.setItem( 'data' , ul_container.innerHTML);
@@ -198,7 +198,43 @@ function displaydata() {
     ul_container.innerHTML = localStorage.getItem('data');
 }
 
+
+function saveselect_data() {
+    const selecttag = document.querySelectorAll('#task-priority');
+    let option_values = [] ;
+    selecttag.forEach(element => {
+       console.log(element.options[element.selectedIndex]) 
+    });
+    console.log(option_values);
+    
+}
+
 displaydata();
 
 
-/* let priority_task = document.getElementById('task-priority'); */
+function myfunction(x) {
+   let  option_collection = x ;
+   
+   let option_value = option_collection.options[x.selectedIndex].value;
+   console.log(option_value); 
+   
+            if(option_value==1) {
+                option_collection.parentNode.parentNode.classList.add('priority-a');
+                option_collection.parentNode.parentNode.classList.remove('priority-b');
+                option_collection.parentNode.parentNode.classList.remove('priority-c');
+            }
+            else if(option_value==2) {
+                option_collection.parentNode.parentNode.classList.add('priority-b');
+                option_collection.parentNode.parentNode.classList.remove('priority-a');
+                option_collection.parentNode.parentNode.classList.remove('priority-c');
+            }
+            else if(option_value==3) {
+                option_collection.parentNode.parentNode.classList.add('priority-c');
+                option_collection.parentNode.parentNode.classList.remove('priority-a');
+                option_collection.parentNode.parentNode.classList.remove('priority-b');
+            } 
+
+            console.log(option_values_collection)
+}
+
+
