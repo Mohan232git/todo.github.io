@@ -2,7 +2,7 @@ let ul_container = document.getElementById('ul-container');
 let switch_img = document.getElementById('switch-img') ;
 let body = document.getElementById('body');
 let select_tag=[] ;
-let option_values_collection = [] ;
+let option_values_collection = {} ;
 
 
 
@@ -77,7 +77,7 @@ function addlistitem() {
 
     select.forEach(item => {
         item.addEventListener('change', (e)=> {
-            option_values_collection.push(e.target.options[e.target.options.selectedIndex].value);
+            option_values_collection[select_tag.indexOf(e.target)] = e.target.options[e.target.options.selectedIndex] ;
             myfunction(e.target);
        
         });
