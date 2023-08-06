@@ -1,8 +1,7 @@
 let ul_container = document.getElementById('ul-container'); 
 let switch_img = document.getElementById('switch-img') ;
 let body = document.getElementById('body');
-let select_tag=[] ;
-let option_values_collection = {} ;
+let display_count = document.querySelector('#items-count');
 
 
 
@@ -17,11 +16,6 @@ addEventListener('keydown', (event)=> {
 
 
 
-/* select.addEventListener( 'change' , (e)=>{
-    console.log(e.target.options[e.target.selectedIndex].text);
-}) */
-
-
 
 
 
@@ -32,11 +26,9 @@ addEventListener('keydown', (event)=> {
 
 ul_container.addEventListener('click' , (event)=> {
    
+   
         if(event.target.tagName === 'LI') {
             event.target.classList.toggle('checked-items');
-            
-            
-           
         }
         if(event.target.tagName === "LABEL") {
             event.target.parentNode.parentNode.parentNode.classList.toggle('checked-items');
@@ -73,11 +65,10 @@ function addlistitem() {
     input.value = "" ;
     
     let select= document.querySelectorAll('#task-priority');
-    select_tag = [...select];    
+     
 
     select.forEach(item => {
         item.addEventListener('change', (e)=> {
-            option_values_collection[select_tag.indexOf(e.target)] = e.target.options[e.target.options.selectedIndex] ;
             myfunction(e.target);
        
         });
@@ -181,12 +172,23 @@ function swapimg() {
 
 
 const count_items  = () => {
-    let display_count = document.querySelector('#items-count');
-    let NotChecked = ul_container.querySelectorAll('li:not(.checked-items)');
     
+    let NotChecked = ul_container.querySelectorAll('li:not(.checked-items)');
     display_count.innerText =NotChecked.length;
-   
+   savecount();
 }
+
+function savecount() {
+    
+    localStorage.setItem('count' ,display_count.innerText);
+}
+
+function displaycount() {
+    console.log(display_count.innerText);
+    display_count.innerText = localStorage.getItem('count') ;
+}
+
+displaycount();
 
 
 function savedata() {
@@ -216,7 +218,7 @@ function myfunction(x) {
    let  option_collection = x ;
    
    let option_value = option_collection.options[x.selectedIndex].value;
-   console.log(option_value); 
+   
    
             if(option_value==1) {
                 option_collection.parentNode.parentNode.classList.add('priority-a');
@@ -234,7 +236,14 @@ function myfunction(x) {
                 option_collection.parentNode.parentNode.classList.remove('priority-b');
             } 
 
-            console.log(option_values_collection)
+          
 }
 
 
+function clearcomp() {
+    let completedItems = document.querySelectorAll('li.checked-items');
+    completedItems.forEach(element=>{
+        element.remove();
+    });
+    savedata();
+}
