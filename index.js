@@ -2,8 +2,13 @@ let ul_container = document.getElementById('ul-container');
 let switch_img = document.getElementById('switch-img') ;
 let body = document.getElementById('body');
 let display_count = document.querySelector('#items-count');
-
-
+let all_option = document.querySelector('.all-option');
+let active_option = document.querySelector('.active-option');
+let completed_option = document.getElementById('completed-option');
+let options = document.querySelector(".middle-options");
+all_option.classList.add('active-option');
+active_option.classList.remove('active-option')
+completed_option.classList.remove('active-option')
 
 
 
@@ -39,8 +44,8 @@ ul_container.addEventListener('click' , (event)=> {
         
 
         
-        count_items();
-       savedata();
+    count_items();
+    savedata();
 });
 
 
@@ -74,7 +79,7 @@ function addlistitem() {
         });
         
     }) ;
-    saveselect_data();
+
     count_items() ;
     savedata();
    
@@ -158,6 +163,7 @@ function swapimg() {
         inputdiv.classList.add('input-box-dm');
         inputbox.classList.add('input-dm');
         taskdiv.classList.add('dm-tasks');
+        options.classList.add('dm-middle-options')
         
     }
     else{
@@ -166,6 +172,7 @@ function swapimg() {
         inputdiv.classList.remove('input-box-dm');
         inputbox.classList.remove('input-dm');
         taskdiv.classList.remove('dm-tasks');
+        options.classList.remove('dm-middle-options')
         
     }
 }
@@ -201,15 +208,7 @@ function displaydata() {
 }
 
 
-function saveselect_data() {
-    const selecttag = document.querySelectorAll('#task-priority');
-    let option_values = [] ;
-    selecttag.forEach(element => {
-       console.log(element.options[element.selectedIndex]) 
-    });
-    console.log(option_values);
-    
-}
+
 
 displaydata();
 
@@ -246,4 +245,46 @@ function clearcomp() {
         element.remove();
     });
     savedata();
+}
+
+function display_all() {
+    all_option.classList.add('active-option');
+    active_option.classList.remove('active-option');
+    completed_option.classList.remove('active-option');
+    let allitems = document.querySelectorAll('.listItems');
+    allitems.forEach(element => {
+        element.style.display = 'flex';
+    });
+     
+}
+
+function display_active() {
+    all_option.classList.remove('active-option');
+    active_option.classList.add('active-option');
+    completed_option.classList.remove('active-option');
+    const items = document.querySelectorAll('.checked-items');
+    let unchecked_items = document.querySelectorAll('.listItems:not(.checked-items)');
+    items.forEach(element => {
+        element.style.display='none';
+    });
+    unchecked_items.forEach(element=>{
+        element.style.display = 'flex';
+    })
+}
+
+function display_completed() {
+
+    all_option.classList.remove('active-option')
+    active_option.classList.remove('active-option')
+    completed_option.classList.add('active-option')
+    let Items = document.querySelectorAll('.listItems:not(.checked-items)');
+    let checked_items = document.querySelectorAll(".checked-items");
+
+    checked_items.forEach(element=> {
+        element.style.display = 'flex';
+    })
+    
+    Items.forEach(element=>{
+        element.style.display = 'none';
+    })
 }

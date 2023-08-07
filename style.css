@@ -8,11 +8,12 @@
 body {
     font-size: 18px;
     font-family: 'Hanken Grotesk', sans-serif; 
-    background-color: hsl(0, 0%, 98%);  
+    background-color:  hsl(0, 0%, 98%);  
 }
 
 .dm-body {
     background-color: hsl(235, 24%, 19%);
+    color: white;
 }
 
 .image {
@@ -135,6 +136,7 @@ body {
     width: 100%;
     background-color: white;
     box-shadow: -1px 1px 5px #8888;
+    border-radius:5px ;
     
 }
 
@@ -410,6 +412,41 @@ li:hover #cross {
     border-radius: 10px;
 }
 
+
+.middle-options {
+    width: 100%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    box-shadow:-1px 1px 5px #8888 ;
+    border-radius:5px ;
+    margin-top:30px;
+    height:40px ;
+}
+
+.options {
+    color: gray;
+    text-transform:capitalize;
+    font-weight: 500;
+}
+
+
+.active-option {
+    color: blue !important;
+}
+
+.middle-options p:hover {
+    color: rgb(68, 68, 238);
+    font-weight: 700;
+   
+}
+
+.dm-middle-options {
+    background-color: hsl(235, 24%, 19%);
+   
+}
 
 
 @media(max-width:600px){
