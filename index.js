@@ -13,7 +13,8 @@ completed_option.classList.remove('active-option')
 
 
 addEventListener('keydown', (event)=> {
-    if(event.keyCode==13 && event.target.nodeName =="INPUT") {
+    if(event.key=='Enter') {
+        event.preventDefault();
         addlistitem();
     }
 }) ;
@@ -71,19 +72,20 @@ function addlistitem() {
     
     let select= document.querySelectorAll('#task-priority');
      
-
-    select.forEach(item => {
-        item.addEventListener('change', (e)=> {
-            myfunction(e.target);
-       
-        });
-
-        item.addEventListener('keydown' ,(e)=>{
+    select.forEach(element => {
+        element.addEventListener('keydown', (e)=>{
             if(e.keyCode==13) {
                 e.preventDefault();
-                 return false; 
+                console.log('nothing')
             }
+        })
+    })
+    select.forEach(item => {
+        
+        item.addEventListener('change', (e)=> {
             
+            myfunction(e.target);
+       
         });
         
     }) ;
@@ -147,12 +149,6 @@ const newprioritydiv = ()=> {
     prioritydiv.appendChild(selecttag)
 
     prioritydiv.appendChild(spanCross);
-
-    console.log(option_select);
-
-
-    
-
     return prioritydiv ;
 }
 
