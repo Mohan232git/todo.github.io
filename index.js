@@ -13,7 +13,7 @@ completed_option.classList.remove('active-option')
 
 
 addEventListener('keydown', (event)=> {
-    if(event.keyCode==13) {
+    if(event.keyCode==13 && event.target.nodeName =="INPUT") {
         addlistitem();
     }
 }) ;
